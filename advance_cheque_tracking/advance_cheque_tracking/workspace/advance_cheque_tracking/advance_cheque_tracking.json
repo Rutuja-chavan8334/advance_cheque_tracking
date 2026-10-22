@@ -1,0 +1,88 @@
+{
+ "app": "advance_cheque_tracking",
+ "charts": [
+  {
+   "chart_name": "Advance Cheques by Status",
+   "label": "Advance Cheques by Status"
+  }
+ ],
+ "content": "[{\"id\": \"a52d85f5cd\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Advance Cheque Tracking</b></span>\", \"col\": 12}}, {\"id\": \"99b8c277b2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cheques Return Pending\", \"col\": 3}}, {\"id\": \"d7efb1d72b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Return Pending Amount\", \"col\": 3}}, {\"id\": \"ce59012ce1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cheques Issued\", \"col\": 3}}, {\"id\": \"4f5d06b9c7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cheques Returned\", \"col\": 3}}, {\"id\": \"9798d78060\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Advance Cheques by Status\", \"col\": 12}}, {\"id\": \"d023582170\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"d554adb100\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Advance Cheque\", \"col\": 3}}, {\"id\": \"54e84447c2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cheque Report\", \"col\": 3}}, {\"id\": \"4c7d2f4228\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Settings\", \"col\": 3}}]",
+ "creation": "2026-10-21 23:36:08.654422",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "money-coins-1",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Advance Cheque Tracking",
+ "link_type": "DocType",
+ "links": [],
+ "modified": "2026-10-22 00:48:24.414662",
+ "modified_by": "Administrator",
+ "module": "advance_cheque_tracking",
+ "name": "Advance Cheque Tracking",
+ "number_cards": [
+  {
+   "label": "Cheques Return Pending",
+   "number_card_name": "Cheques Return Pending"
+  },
+  {
+   "label": "Return Pending Amount",
+   "number_card_name": "Return Pending Amount"
+  },
+  {
+   "label": "Cheques Issued",
+   "number_card_name": "Cheques Issued"
+  },
+  {
+   "label": "Cheques Returned",
+   "number_card_name": "Cheques Returned"
+  }
+ ],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "Sales Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 0.0,
+ "shortcuts": [
+  {
+   "doc_view": "List",
+   "label": "Advance Cheque",
+   "link_to": "Advance Cheque",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Cheque Report",
+   "link_to": "Advance Cheque Report",
+   "report_ref_doctype": "Advance Cheque",
+   "type": "Report"
+  },
+  {
+   "doc_view": "",
+   "label": "Settings",
+   "link_to": "Advance Cheque Settings",
+   "type": "DocType"
+  }
+ ],
+ "title": "Advance Cheque Tracking",
+ "type": "Workspace"
+}

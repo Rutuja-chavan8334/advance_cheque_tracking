@@ -1,0 +1,196 @@
+{
+ "doctype": "DocType",
+ "name": "Advance Cheque",
+ "module": "advance_cheque_tracking",
+ "autoname": "format:ACH-{YYYY}-{#####}",
+ "naming_rule": "Expression",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "allow_rename": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "title_field": "cheque_number",
+ "search_fields": "cheque_number,customer,sales_order",
+ "show_title_field_in_link": 1,
+ "field_order": [
+  "sales_order_section",
+  "sales_order",
+  "customer",
+  "company",
+  "column_break_people",
+  "sales_person",
+  "sales_person_user",
+  "accounts_responsible_person",
+  "cheque_section",
+  "cheque_number",
+  "cheque_amount",
+  "column_break_dates",
+  "cheque_issue_date",
+  "tracking_section",
+  "cheque_status",
+  "return_pending_since",
+  "last_reminded_on",
+  "column_break_return",
+  "actual_return_date",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_order_section",
+   "fieldtype": "Section Break",
+   "label": "Sales Order"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer / Party",
+   "options": "Customer",
+   "fetch_from": "sales_order.customer",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "fetch_from": "sales_order.company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_people",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_person",
+   "fieldtype": "Link",
+   "label": "Sales Person",
+   "options": "Sales Person",
+   "in_standard_filter": 1,
+   "description": "Defaults to the first Sales Person on the Sales Order."
+  },
+  {
+   "fieldname": "sales_person_user",
+   "fieldtype": "Link",
+   "label": "Sales Person User",
+   "options": "User",
+   "read_only": 1,
+   "description": "User notified for the Sales Person. Resolved from Sales Person > Employee > User."
+  },
+  {
+   "fieldname": "accounts_responsible_person",
+   "fieldtype": "Link",
+   "label": "Accounts Responsible Person",
+   "options": "User",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cheque_section",
+   "fieldtype": "Section Break",
+   "label": "Cheque"
+  },
+  {
+   "fieldname": "cheque_number",
+   "fieldtype": "Data",
+   "label": "Cheque Number",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "cheque_amount",
+   "fieldtype": "Currency",
+   "label": "Cheque Amount",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cheque_issue_date",
+   "fieldtype": "Date",
+   "label": "Cheque Issue Date",
+   "reqd": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Return Tracking"
+  },
+  {
+   "fieldname": "cheque_status",
+   "fieldtype": "Select",
+   "label": "Cheque Status",
+   "options": "Issued\nReturn Pending\nReturned",
+   "default": "Issued",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "return_pending_since",
+   "fieldtype": "Date",
+   "label": "Return Pending Since",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "last_reminded_on",
+   "fieldtype": "Date",
+   "label": "Last Reminded On",
+   "read_only": 1,
+   "no_copy": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "column_break_return",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_return_date",
+   "fieldtype": "Date",
+   "label": "Actual Return Date",
+   "depends_on": "eval:doc.cheque_status=='Returned'",
+   "mandatory_depends_on": "eval:doc.cheque_status=='Returned'",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "permissions": [],
+ "states": [
+  {
+   "title": "Issued",
+   "color": "Blue"
+  },
+  {
+   "title": "Return Pending",
+   "color": "Orange"
+  },
+  {
+   "title": "Returned",
+   "color": "Green"
+  }
+ ]
+}

@@ -1,40 +1,41 @@
-### advance_cheque_tracking
+# Advance Cheque Tracking
 
-advance_cheque_tracking
+ERPNext (version-16) module that tracks advance cheques received against Sales Orders and reminds the
+Sales Person and the Accounts person to collect the original cheque once the advance is settled.
 
-### Installation
+## What it does
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+- Records each cheque against a submitted Sales Order (`Advance Cheque`).
+- Moves the cheque to **Return Pending** when the Sales Order is fully billed or its advance is fully
+  used (Sales Invoice submit), and back to **Issued** if that invoice is cancelled.
+- Alerts both people with a desk pop-up, a bell notification, an email, a reminder at login and a daily digest.
+- Stops all reminders once the cheque is marked **Returned** with its actual return date.
+- One report, Advance Cheque Report, with a Status filter (Pending, Issued, Return Pending, Returned), plus a workspace.
+
+Full design: [docs/Advance_Cheque_Tracking_Technical_SDD.docx](docs/Advance_Cheque_Tracking_Technical_SDD.docx).
+
+## Install
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch version-16
-bench install-app advance_cheque_tracking
+bench get-app <repo-url> --branch version-16
+bench --site <site> install-app advance_cheque_tracking
+bench --site <site> migrate
 ```
 
-### Contributing
+Then open **Advance Cheque Settings** and set the default Accounts Responsible Person. Each Sales Person that
+should be notified needs an Employee with a User.
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+## Demo data and tests
 
 ```bash
-cd apps/advance_cheque_tracking
-pre-commit install
+bench --site <site> execute advance_cheque_tracking.demo.run
+bench --site <site> set-config allow_tests true
+bench --site <site> run-tests --app advance_cheque_tracking
+bench --site <site> set-config allow_tests false
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+The demo creates three test users (password `Demo@12345`). Remove them on a production site.
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
-### CI
+## License
 
-This app can use GitHub Actions for CI. The following workflows are configured:
-
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
-
-
-### License
-
-mit
+MIT

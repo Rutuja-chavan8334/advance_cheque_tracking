@@ -1,0 +1,12 @@
+{
+ "doctype": "Report",
+ "name": "Advance Cheque Report",
+ "report_name": "Advance Cheque Report",
+ "ref_doctype": "Advance Cheque",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "module": "advance_cheque_tracking",
+ "add_total_row": 1,
+ "disabled": 0,
+ "roles": []
+}

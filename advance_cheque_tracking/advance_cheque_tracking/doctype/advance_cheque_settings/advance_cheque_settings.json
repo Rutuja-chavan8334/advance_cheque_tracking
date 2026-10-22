@@ -1,0 +1,35 @@
+{
+ "doctype": "DocType",
+ "name": "Advance Cheque Settings",
+ "module": "advance_cheque_tracking",
+ "issingle": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_daily_reminder",
+  "reminder_interval_days",
+  "default_accounts_responsible_person"
+ ],
+ "fields": [
+  {
+   "fieldname": "enable_daily_reminder",
+   "fieldtype": "Check",
+   "label": "Send Daily Reminder",
+   "default": "1",
+   "description": "Remind responsible users about cheques still in Return Pending."
+  },
+  {
+   "fieldname": "reminder_interval_days",
+   "fieldtype": "Int",
+   "label": "Remind Every (Days)",
+   "default": "1",
+   "depends_on": "enable_daily_reminder"
+  },
+  {
+   "fieldname": "default_accounts_responsible_person",
+   "fieldtype": "Link",
+   "label": "Default Accounts Responsible Person",
+   "options": "User"
+  }
+ ],
+ "permissions": []
+}

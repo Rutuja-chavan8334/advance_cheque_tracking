@@ -1,14 +1,14 @@
 app_name = "advance_cheque_tracking"
-app_title = "advance_cheque_tracking"
+app_title = "Advance Cheque Tracking"
 app_publisher = "Rutuja Chavan"
-app_description = "advance_cheque_tracking"
+app_description = "Track advance cheques against Sales Orders and remind users to collect them back"
 app_email = "chavanrutu2@gmail.com"
 app_license = "mit"
 
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -26,7 +26,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/advance_cheque_tracking/css/advance_cheque_tracking.css"
-# app_include_js = "/assets/advance_cheque_tracking/js/advance_cheque_tracking.js"
+app_include_js = "/assets/advance_cheque_tracking/js/cheque_reminder.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/advance_cheque_tracking/css/advance_cheque_tracking.css"
@@ -140,38 +140,30 @@ app_license = "mit"
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
+# Session
+# -------
+
+boot_session = "advance_cheque_tracking.boot.boot_session"
+
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Sales Invoice": {
+		"on_submit": "advance_cheque_tracking.advance_cheque_tracking.custom_script.sales_invoice.sales_invoice.on_submit",
+		"on_cancel": "advance_cheque_tracking.advance_cheque_tracking.custom_script.sales_invoice.sales_invoice.on_cancel",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"advance_cheque_tracking.tasks.all"
-# 	],
-# 	"daily": [
-# 		"advance_cheque_tracking.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"advance_cheque_tracking.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"advance_cheque_tracking.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"advance_cheque_tracking.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"advance_cheque_tracking.tasks.send_pending_return_reminders"
+	],
+}
 
 # Testing
 # -------
